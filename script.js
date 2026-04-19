@@ -1,5 +1,3 @@
-//your JS code here
-
 const bands = [
   'The Plot in You',
   'The Devil Wears Prada',
@@ -16,19 +14,17 @@ const bands = [
   'An Old Dog'
 ];
 
-// Function to remove articles
+// Remove articles (a, an, the)
 function strip(bandName) {
   return bandName.replace(/^(a |an |the )/i, '').trim();
 }
 
-// Sort ignoring articles
+// Sort alphabetically ignoring articles
 const sortedBands = bands.sort((a, b) => {
-  if (strip(a) > strip(b)) return 1;
-  if (strip(a) < strip(b)) return -1;
-  return 0;
+  return strip(a).localeCompare(strip(b));
 });
 
-// Add to DOM
+// Add sorted list to DOM
 const ul = document.getElementById("band");
 
 sortedBands.forEach(band => {
